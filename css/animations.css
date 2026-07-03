@@ -1,0 +1,65 @@
+/* ==========================================================================
+   animations.css — keyframes & motion utility classes
+   ========================================================================== */
+
+@keyframes pulseRing {
+  0% { transform: scale(1); opacity: 0.9; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+@keyframes blink {
+  0%, 45% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-16px, 22px); }
+}
+
+@keyframes floatMed {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(8px); opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spinLoader {
+  to { transform: rotate(360deg); }
+}
+
+/* Utility: applied/controlled primarily via GSAP, these provide sane
+   no-JS fallbacks and reduced-motion baselines */
+.js .gsap-fade-up { opacity: 0; transform: translateY(40px); }
+.no-js .gsap-fade-up { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .hero__glow--1, .hero__glow--2, .hero__glow--3,
+  .hero__portrait-wrap, .resume__doc, .project-card--soon .plus {
+    animation: none !important;
+  }
+}
